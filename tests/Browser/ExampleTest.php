@@ -2,9 +2,12 @@
 
 use Laravel\Dusk\Browser;
 
-test('basic example', function () {
+it('can go to laracasts', function () {
     $this->browse(function (Browser $browser) {
         $browser->visit('/')
-                ->assertSee('Laravel');
+                ->click('@laravel');
+        $browser->waitForLink(5);
+        $browser->assertSee('Laracasts');
+
     });
 });
